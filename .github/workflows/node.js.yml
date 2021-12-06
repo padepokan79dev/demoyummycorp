@@ -12,11 +12,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    #strategy:
-      #matrix:
-        #node-version: [14.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
     - name: Clone repository
       uses: actions/checkout@v2
@@ -26,12 +21,5 @@ jobs:
         node-version: 14.x
     - name: Install dependencies
       run: npm install
-    - name: Test
-      run: npm test
-      env:
-        CI: true
     - name: Generate build
-      run: npm run build
-
-
-   
+      run: npm run-script build
