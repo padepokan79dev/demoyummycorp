@@ -44,6 +44,7 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         port: ${{ secrets.PORT }}
+        proxy_port: 2121
         key: ${{ secrets.KEY }}
         source: "demoyummycorp-build"
         target: "~/apps/web"
