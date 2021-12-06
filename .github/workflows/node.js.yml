@@ -28,7 +28,7 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: demoyummycorp-build
-        path: ./
+        path: ./dist/*
   
   deploy:
     runs-on: ubuntu-latest
@@ -44,7 +44,7 @@ jobs:
         src: ./dist/*
         host: infra@spacex79.xyz
         remote: ~/apps/web
-        port: 2212
+        port: 2121
         user: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_KEY }}
 
