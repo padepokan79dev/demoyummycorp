@@ -42,8 +42,8 @@ jobs:
       uses: appleboy/scp-action@master
       with:
         host: spacex79.xyz
-        username: spacex79.xyz
+        username: infra
         port: 2121
         key: ${{ secrets.KEY }}
         source: "demoyummycorp-build"
-        target: ~/apps/web
+        target: "~/apps/web"
