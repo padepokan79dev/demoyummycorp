@@ -38,3 +38,12 @@ jobs:
       uses: actions/download-artifact@v1
       with:
         name: demoyummycorp-build
+    - name: Copy File via SSH Key
+      uses: appleboy/scp-action@master
+      with:
+        host: spacex79.xyz
+        username: spacex79.xyz
+        port: 2121
+        key: ${{ secrets.KEY }}
+        source: "demoyummycorp-build"
+        target: ~/apps/web
