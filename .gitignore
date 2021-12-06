@@ -1,0 +1,11 @@
+node_modules
+build
+build.zip
+.scannerwork
+.vscode
+npm-debug.log
+.git
+debug.log
+package-lock.json
+dist
+dist.zip
