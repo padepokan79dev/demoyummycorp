@@ -40,11 +40,11 @@ jobs:
         name: demoyummycorp-build
     - name: Publish
       uses: nogsantos/scp-deploy@master
-        with:
-          src: ./dist/*
-          host: infra@spacex79.xyz
-          remote: ~/apps/web
-          port: 2212
-          user: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
+      with:
+        src: ./dist/*
+        host: infra@spacex79.xyz
+        remote: ~/apps/web
+        port: 2212
+        user: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_KEY }}
 
