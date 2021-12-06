@@ -28,7 +28,6 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: demoyummycorp-build
-        path: build
   
   deploy:
     runs-on: ubuntu-latest
