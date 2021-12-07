@@ -46,6 +46,7 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: 2121
+        overwrite: true
         #proxy_port: 2121
         source: /home/runner/work/demoyummycorp/demoyummycorp/demoyummycorp-build
         target: "~/apps/web"
