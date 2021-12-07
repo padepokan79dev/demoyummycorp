@@ -47,5 +47,5 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
         proxy_port: 2121
-        source: dist/demoyummycorp-build.zip
+        source: dist/demoyummycorp-build
         target: "/apps/web"
