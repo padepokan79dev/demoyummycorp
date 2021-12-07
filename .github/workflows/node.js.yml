@@ -39,18 +39,6 @@ jobs:
       uses: actions/download-artifact@v1
       with:
         name: demoyummycorp-build
-    # Zip the build using external action
-    - name: Zip build
-      uses: thedoctor0/zip-release@master
-      with:
-        filename: demoyummycorp-build.zip
-        path: demoyummycorp-build.zip
-    # Upload as an artifact of the current workflow
-    - name: Upload build zip artifact
-      uses: actions/upload-artifact@v1
-      with:
-        name: demoyummycorp-build.zip
-        path: demoyummycorp-build.zip
     - name: Copy File via SSH Password
       uses: appleboy/scp-action@master
       with:
@@ -60,4 +48,4 @@ jobs:
         port: ${{ secrets.PORT }}
         proxy_port: 2121
         source: dist/demoyummycorp-build.zip
-        target: "~/apps/web"
+        target: "/apps/web"
