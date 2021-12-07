@@ -48,4 +48,4 @@ jobs:
         port: 2121
         #proxy_port: 2121
         source: /home/runner/work/demoyummycorp/demoyummycorp/demoyummycorp-build
-        target: "/apps/web"
+        target: "~/apps/web"
