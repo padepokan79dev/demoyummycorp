@@ -10,7 +10,7 @@ on:
     branches: [ development ]
 
 jobs:
-  build:
+  build-web:
     runs-on: ubuntu-latest
     steps:
     - name: Clone repository
@@ -30,9 +30,9 @@ jobs:
         name: demoyummycorp-build
         path: dist
   
-  deploy:
+  deploy-web:
     runs-on: ubuntu-latest
-    needs: build
+    needs: build-web
     steps:
     # Download previously shared build
     - name: Get artifact
@@ -47,15 +47,15 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: 2121
         overwrite: true
-        #proxy_port: 2121
         source: /home/runner/work/demoyummycorp/demoyummycorp/demoyummycorp-build
         target: "~/apps/web"
   
   automated-test-web:
     runs-on: ubuntu-latest
-    needs: deploy
+    needs: deploy-web
     steps:
     - name: Execute command using SSH Key
+      continue-on-error: true
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST_SELENIUM }}
@@ -64,3 +64,18 @@ jobs:
         port: 4344
         timeout: 180s
         script: "TERM=xterm-256color /home/selenium/SeleniumJavaFramework/runtest.sh"
+  
+  automated-load-test-web:
+    runs-on: ubuntu-latest
+    needs: automated-test-web
+    steps:
+    - name: Execute command using SSH Key
+      continue-on-error: true
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST_SELENIUM }}
+        username: ${{ secrets.USERNAME_SELENIUM }}
+        password: ${{ secrets.PASSWORD_SELENIUM }}
+        port: 4344
+        timeout: 180s
+        script: "TERM=xterm-256color /home/selenium/apache-jmeter-5.4.1/bin/jmeter.sh -n -t ~/load_test_fsm_1k_request.jmx -l ~/resultload.csv"
