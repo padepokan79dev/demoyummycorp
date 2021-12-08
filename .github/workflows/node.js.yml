@@ -50,3 +50,16 @@ jobs:
         #proxy_port: 2121
         source: /home/runner/work/demoyummycorp/demoyummycorp/demoyummycorp-build
         target: "~/apps/web"
+  
+  automated-test-web:
+    runs-on: ubuntu-latest
+    needs: deploy
+    steps:
+    - name: Execute command using SSH Key
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.HOST_SELENIUM }}
+        username: ${{ secrets.USERNAME_SELENIUM }}
+        password: ${{ secrets.PASSWORD_SELENIUM }}
+        port: 4344
+        script: ~/SeleniumJavaFramework/runtest.sh
