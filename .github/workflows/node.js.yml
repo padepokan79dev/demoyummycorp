@@ -56,7 +56,7 @@ jobs:
     needs: deploy
     steps:
     - name: Execute command using SSH Key
-      uses: appleboy/scp-action@master
+      uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST_SELENIUM }}
         username: ${{ secrets.USERNAME_SELENIUM }}
