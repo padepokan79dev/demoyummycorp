@@ -62,4 +62,5 @@ jobs:
         username: ${{ secrets.USERNAME_SELENIUM }}
         password: ${{ secrets.PASSWORD_SELENIUM }}
         port: 4344
+        timeout: 180s
         script: ~/SeleniumJavaFramework/runtest.sh
