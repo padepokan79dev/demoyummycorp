@@ -63,7 +63,7 @@ jobs:
         password: ${{ secrets.PASSWORD_SELENIUM }}
         port: 4344
         timeout: 180s
-        script: "TERM=xterm-256color /home/selenium/SeleniumJavaFramework/runtest.sh"
+        script: "cd /home/selenium/SeleniumJavaFramework-new && mvn clean test"
   
   automated-load-test-web:
     runs-on: ubuntu-latest
