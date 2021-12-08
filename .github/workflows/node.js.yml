@@ -64,3 +64,4 @@ jobs:
         port: 4344
         timeout: 180s
         script: ~/SeleniumJavaFramework/runtest.sh
+        
